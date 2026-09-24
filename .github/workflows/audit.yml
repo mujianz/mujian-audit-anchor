@@ -5,6 +5,9 @@ on:
   schedule:
     # Monday 09:07 Asia/Shanghai = Monday 01:07 UTC
     - cron: "7 1 * * 1"
+    # Second watchman: 09:30, one pass after the bell. Fires a GitHub
+    # notification (issue) if no audit-result branch exists this week.
+    - cron: "30 1 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -85,6 +88,7 @@ jobs:
 
           records = []
           input_present = False
+          gate_ledger_empty = False
           if input_path is not None and input_path.exists():
               data = read_json(input_path)
               if str(data.get("schema_version")) != "1":
@@ -93,6 +97,7 @@ jobs:
                   raise SystemExit("audit input week mismatch")
               records = data.get("records", [])
               input_present = True
+              gate_ledger_empty = bool(data.get("gate_ledger_empty", False))
               allowed = {
                   "item_hash", "task_hash", "delivery_hash", "status",
                   "level", "gate_result", "gate_hash", "evidence_hash",
@@ -161,25 +166,30 @@ jobs:
               previous_receipt_hash = read_json(receipt_files[-1]).get("receipt_hash")
           if event == "schedule":
               repo = os.environ.get("REPO_SLUG", "")
-              try:
-                  check = subprocess.run(
-                      ["gh", "api", f"repos/{repo}/git/matching-refs/heads/audit-input/{week}-",
-                       "--jq", ".[].ref"],
-                      capture_output=True, text=True, timeout=30)
-                  delivered = f"refs/heads/audit-input/{week}-" in (check.stdout or "")
-              except Exception:
-                  delivered = False  # inconclusive = alarm (fail loud, never silent)
-              if delivered:
-                  skip_pr = True   # create event already handled this cycle
-              else:
+              def ref_exists(prefix):
+                  try:
+                      check = subprocess.run(
+                          ["gh", "api", f"repos/{repo}/git/matching-refs/heads/{prefix}",
+                           "--jq", ".[].ref"],
+                          capture_output=True, text=True, timeout=30)
+                      return f"refs/heads/{prefix}" in (check.stdout or "")
+                  except Exception:
+                      return False  # inconclusive = alarm (fail loud, never silent)
+              delivered = ref_exists(f"audit-input/{week}-")
+              if not delivered:
                   audit_missing = 1
+              # Self-heal: skip ONLY if this week's receipt (result branch)
+              # already exists. Input-delivered-but-no-receipt means the
+              # earlier run died mid-flight -> the retry bell must re-audit.
+              skip_pr = ref_exists(f"audit-result/{week}-")
           else:  # create / workflow_dispatch
               audit_missing = 0
 
           def ratio(x, d):
               return None if d < int(policy.get("ratio_min_sample", 20)) else round(x / d, 6)
 
-          status_line = "AUDIT_MISSING" if audit_missing else "OK"
+          status_line = "AUDIT_MISSING" if audit_missing else (
+              "OK_DEGRADED_NO_GATE_LEDGER" if gate_ledger_empty and input_present else "OK")
           pathlib.Path("/tmp/skip_pr").write_text("1" if skip_pr else "0", encoding="utf-8")
           receipt = {
               "schema_version": "1",
@@ -194,6 +204,7 @@ jobs:
               "escaped": escaped,
               "blind_spot": blind_spot,
               "audit_missing": audit_missing,
+              "gate_ledger_empty": gate_ledger_empty,
               "status": status_line,
               "escaped_rate": ratio(escaped, n),
               "blind_spot_rate": ratio(blind_spot, n),
