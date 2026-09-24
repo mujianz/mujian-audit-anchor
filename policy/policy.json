@@ -1,0 +1,27 @@
+{
+  "policy_version": "5.0",
+  "schema_version": "1",
+  "sample_size": 20,
+  "sample_algorithm": "sha256(run_id + ':' + item_hash)",
+  "ratio_min_sample": 20,
+  "allowed_classification": ["L0", "L1", "L2"],
+  "required_fields": {
+    "work_done": ["delivery_hash", "task_hash", "status", "evidence_hash"],
+    "gate": ["task_hash", "level", "result"]
+  },
+  "audit_rules": {
+    "done_without_gate": "escaped",
+    "done_without_evidence": "blind_spot",
+    "pass_without_gate_hash": "escaped",
+    "unknown_classification": "blind_spot"
+  },
+  "capabilities": {
+    "quote_engine": "ON",
+    "promise_engine": "ON",
+    "install_create_hook": "ON"
+  },
+  "public_content": {
+    "allow": ["week", "count", "hash", "rule_id", "status", "timestamp"],
+    "deny": ["real_name", "phone", "email", "customer_name", "amount", "internal_path", "ip", "token", "api_key"]
+  }
+}
