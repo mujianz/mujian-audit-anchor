@@ -255,12 +255,9 @@ jobs:
             echo "This cycle's input was already audited by the create-event run; skipping."
             exit 0
           fi
-          WEEK=$(python3 - <<'PY'
-          import pathlib
-          for p in sorted(pathlib.Path("/tmp").glob("receipt-*.json")):
-              print(p.stem[len("receipt-"):])
-          PY
-          | tail -n1)
+          WEEK=$(basename "$(ls /tmp/receipt-*.json | sort | tail -n1)" .json)
+          WEEK=${WEEK#receipt-}
+          [ -n "$WEEK" ] || { echo "FATAL: no receipt file on /tmp"; exit 1; }
           MISSING=$(python3 -c "import json,sys; print(json.load(open('/tmp/receipt-%s.json' % '$WEEK'))['audit_missing'])")
           if [ "$MISSING" = "1" ]; then TITLE="AUDIT_MISSING ${WEEK}"; else TITLE="AUDIT ${WEEK}"; fi
           BRANCH="audit-result/${WEEK}-${EVENT_SHA:0:12}"
