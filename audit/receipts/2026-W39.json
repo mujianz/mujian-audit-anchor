@@ -3,41 +3,17 @@
   "blind_spot": 0,
   "blind_spot_rate": 0.0,
   "caught_before_external": 0,
-  "escaped": 20,
-  "escaped_rate": 1.0,
+  "escaped": 19,
+  "escaped_rate": 0.95,
   "event": "create",
-  "event_sha": "891a43c7717bedb68fd52ae94d9fd7cbe4d1c70d",
+  "event_sha": "48c7f4c9852a9f7619badffc676238de86372997",
   "findings": [
     {
       "finding": [
         "done_without_gate",
         "done_gate_not_pass"
       ],
-      "item_hash": "ff760cceee4ce8c5a7cca8fd38aaf51f683f82bff4abaa80832eb528f2ef0ce0",
-      "source": "external_audit"
-    },
-    {
-      "finding": [
-        "done_without_gate",
-        "done_gate_not_pass"
-      ],
-      "item_hash": "8593f4b06e0cff09b46a87f7010f9d694f3669e1c65fa9486c68c38da7653d0e",
-      "source": "external_audit"
-    },
-    {
-      "finding": [
-        "done_without_gate",
-        "done_gate_not_pass"
-      ],
-      "item_hash": "d9ae3166246fc97b157b4b642dadbae60366c6af875d791327f8613eb01c32d5",
-      "source": "external_audit"
-    },
-    {
-      "finding": [
-        "done_without_gate",
-        "done_gate_not_pass"
-      ],
-      "item_hash": "c0940fbbb073ceaf9dceb78708d0346bdc06ca3ad32249d7a3d22628078005d8",
+      "item_hash": "58c39f96d9ac5e64eadc8bb197e08cde2b567823fb6882e8e5da16148a5e2fd1",
       "source": "external_audit"
     },
     {
@@ -53,39 +29,7 @@
         "done_without_gate",
         "done_gate_not_pass"
       ],
-      "item_hash": "00cf3aa1db5d2c45c7f6cf9596525ffd257bcddab3cffcfe8f11d17344aa68f7",
-      "source": "external_audit"
-    },
-    {
-      "finding": [
-        "done_without_gate",
-        "done_gate_not_pass"
-      ],
-      "item_hash": "8a695496f5fd2316acead361442d0ab1323a4cfde18c07bfc4edf2dbff358325",
-      "source": "external_audit"
-    },
-    {
-      "finding": [
-        "done_without_gate",
-        "done_gate_not_pass"
-      ],
-      "item_hash": "477e6167896f24eac07a7c2f7026e31adc068dc1b943adec9271492403f5cb9d",
-      "source": "external_audit"
-    },
-    {
-      "finding": [
-        "done_without_gate",
-        "done_gate_not_pass"
-      ],
-      "item_hash": "d95249f87bd9beea6277032d924978fdaaafe3d3dc28b58912db7aafafb0bc4c",
-      "source": "external_audit"
-    },
-    {
-      "finding": [
-        "done_without_gate",
-        "done_gate_not_pass"
-      ],
-      "item_hash": "3d2e08d80b7f9615b01de4caf69053912e0bfc00c77066811b6a81235966c5e6",
+      "item_hash": "8593f4b06e0cff09b46a87f7010f9d694f3669e1c65fa9486c68c38da7653d0e",
       "source": "external_audit"
     },
     {
@@ -101,7 +45,55 @@
         "done_without_gate",
         "done_gate_not_pass"
       ],
+      "item_hash": "29d868e1ffba6ed4600c355310f74e3f0b5fe482814d594a47777767c01e3c4f",
+      "source": "external_audit"
+    },
+    {
+      "finding": [
+        "done_without_gate",
+        "done_gate_not_pass"
+      ],
+      "item_hash": "d698d93affe3a3f151efcf1ac2c0aa093af669aa520ace194a65a2fc5fef7a2f",
+      "source": "external_audit"
+    },
+    {
+      "finding": [
+        "done_without_gate",
+        "done_gate_not_pass"
+      ],
+      "item_hash": "cb7b9c1d7d4427a12878b7ddbe4d15f02d10c7d0585da4ffa819c9585ab13bd6",
+      "source": "external_audit"
+    },
+    {
+      "finding": [
+        "done_without_gate",
+        "done_gate_not_pass"
+      ],
       "item_hash": "ff2ef1dc59e6c569613331d95cf69201475ae6b7ec8f4e8189d48a6dd35f1aec",
+      "source": "external_audit"
+    },
+    {
+      "finding": [
+        "done_without_gate",
+        "done_gate_not_pass"
+      ],
+      "item_hash": "d9ae3166246fc97b157b4b642dadbae60366c6af875d791327f8613eb01c32d5",
+      "source": "external_audit"
+    },
+    {
+      "finding": [
+        "done_without_gate",
+        "done_gate_not_pass"
+      ],
+      "item_hash": "d57f966ce81ded3302f497fe398f78dc1fff14eee752d6ae727e8e2715704909",
+      "source": "external_audit"
+    },
+    {
+      "finding": [
+        "done_without_gate",
+        "done_gate_not_pass"
+      ],
+      "item_hash": "477e6167896f24eac07a7c2f7026e31adc068dc1b943adec9271492403f5cb9d",
       "source": "external_audit"
     },
     {
@@ -117,7 +109,7 @@
         "done_without_gate",
         "done_gate_not_pass"
       ],
-      "item_hash": "cbf45af7d454fa4b9788e0672e3978d9aba88af11958b5c779919156f0eb15a1",
+      "item_hash": "7d09df1a600322da010741457af511e24e82153810eb8fcdad3be0159dcf1f91",
       "source": "external_audit"
     },
     {
@@ -125,15 +117,7 @@
         "done_without_gate",
         "done_gate_not_pass"
       ],
-      "item_hash": "58c39f96d9ac5e64eadc8bb197e08cde2b567823fb6882e8e5da16148a5e2fd1",
-      "source": "external_audit"
-    },
-    {
-      "finding": [
-        "done_without_gate",
-        "done_gate_not_pass"
-      ],
-      "item_hash": "2ba538e65cd07ac723751493e6ec97a891b3c2ffe2d64ff91f993cedf257b6f5",
+      "item_hash": "00cf3aa1db5d2c45c7f6cf9596525ffd257bcddab3cffcfe8f11d17344aa68f7",
       "source": "external_audit"
     },
     {
@@ -149,15 +133,7 @@
         "done_without_gate",
         "done_gate_not_pass"
       ],
-      "item_hash": "b3bbd7f4dda6eed51021d8fcf9e420ebaf7931d61ede22044585d83fa940da53",
-      "source": "external_audit"
-    },
-    {
-      "finding": [
-        "done_without_gate",
-        "done_gate_not_pass"
-      ],
-      "item_hash": "7d09df1a600322da010741457af511e24e82153810eb8fcdad3be0159dcf1f91",
+      "item_hash": "c0940fbbb073ceaf9dceb78708d0346bdc06ca3ad32249d7a3d22628078005d8",
       "source": "external_audit"
     },
     {
@@ -167,18 +143,34 @@
       ],
       "item_hash": "a71bb3aa8de412b46e07318ac21e55e9209d465dfb8c247fb1d6239b035c058d",
       "source": "external_audit"
+    },
+    {
+      "finding": [
+        "done_without_gate",
+        "done_gate_not_pass"
+      ],
+      "item_hash": "d95249f87bd9beea6277032d924978fdaaafe3d3dc28b58912db7aafafb0bc4c",
+      "source": "external_audit"
+    },
+    {
+      "finding": [
+        "done_without_gate",
+        "done_gate_not_pass"
+      ],
+      "item_hash": "b2bbc2096dd960d38856c195834926092504ade81161c173a7916f7271b1ad7b",
+      "source": "external_audit"
     }
   ],
-  "gate_ledger_empty": true,
-  "generated_at": "2026-09-28T12:17:46.127924+00:00",
-  "input_branch": "audit-input/2026-W39-rerun",
+  "gate_ledger_empty": false,
+  "generated_at": "2026-09-28T12:44:18.220399+00:00",
+  "input_branch": "audit-input/2026-W39-b6ab7b14",
   "policy_version": "5.0",
-  "previous_receipt_hash": null,
-  "receipt_hash": "46b3156bcd97baa5f8b56183e1320672f3bbfeb0100c3c756b99f18f8d34076c",
-  "run_id": "36420910319",
+  "previous_receipt_hash": "46b3156bcd97baa5f8b56183e1320672f3bbfeb0100c3c756b99f18f8d34076c",
+  "receipt_hash": "12d7ebebab40567b76d47b53ea6861b121ad71ec1385c1eca226c68cab66a887",
+  "run_id": "36423746278",
   "sampled": 20,
-  "sampled_bad": 20,
+  "sampled_bad": 19,
   "schema_version": "1",
-  "status": "OK_DEGRADED_NO_GATE_LEDGER",
+  "status": "OK",
   "week": "2026-W39"
 }
